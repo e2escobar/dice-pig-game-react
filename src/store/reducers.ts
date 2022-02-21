@@ -20,7 +20,7 @@ export const initialState: State = {
   players: [
     {
       playerName: 'Player 1',
-      globalScore: 90,
+      globalScore: 0,
       currentScore: 0,
       isWinner: false,
       isActive: true,
