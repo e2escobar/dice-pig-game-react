@@ -2,7 +2,6 @@ import { is } from 'ramda'
 import * as React from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { GameContext } from '../lib/context'
 import { missTurn, setGlobalScore } from '../store/actionCreators'
 import { Dice, numberRange } from './Dice'
 
