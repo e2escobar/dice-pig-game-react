@@ -1,12 +1,10 @@
 FROM node:19.1.0-alpine as build
-WORKDIR /app
-COPY . /app
-RUN npm install
+WORKDIR /usr/app
+COPY . /usr/app
+RUN npm ci
 RUN npm run build
 
-FROM ubuntu
-RUN apt update
-RUN apt install nginx -y
-COPY --from=build /app/dist /var/www/html/
+FROM nginx:1.23.1-alpine
 EXPOSE 80
-CMD ["nginx","-g","daemon off;"]
+COPY ./docker/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /usr/app/dist /usr/share/nginx/html
